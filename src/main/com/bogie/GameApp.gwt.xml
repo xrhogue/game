@@ -1,0 +1,14 @@
+<module>
+
+	<!-- Inherit the core Web Toolkit stuff. -->
+	<inherits name='com.google.gwt.user.User'/>
+ <inherits name='com.google.gwt.i18n.I18N'/>
+
+    <inherits name='com.bogie.common'/>
+    
+	<!-- Specify the app entry point class. -->
+	<entry-point class='com.bogie.client.GameApp'/>
+  
+    <servlet path="/com.bogie.GameApp/gameService" class="com.bogie.server.GameServiceImpl" /> 
+  
+</module>

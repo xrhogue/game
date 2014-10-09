@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+       
+  <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean" autowire="byName">
+    <!--property name="dataSource" ref="dataSource"/-->
+    <property name="configLocation" value="classpath:hibernate.cfg.xml"/>
+    <property name="configurationClass" value="org.hibernate.cfg.AnnotationConfiguration"/>
+    <!--property name="hibernateProperties" ref="hibernateProperties"/-->
+  </bean>
+  
+  <tx:annotation-driven transaction-manager="transactionManager"/>
+  <bean id="transactionInterceptor" class="org.springframework.transaction.interceptor.TransactionInterceptor" autowire="byName" />
+  <bean id="transactionAdvisor" class="org.springframework.transaction.interceptor.TransactionAttributeSourceAdvisor" autowire="byName" />
+  <bean id="transactionAttributeSource" class="org.springframework.transaction.annotation.AnnotationTransactionAttributeSource" />
+  
+  <tx:advice id="defaultTxAdvice" transaction-manager="transactionManager">
+      <tx:attributes>
+          <tx:method name="get*" read-only="true"/>
+          <tx:method name="*"/>
+      </tx:attributes>
+  </tx:advice>
+    
+  <tx:advice id="noTxAdvice">
+      <tx:attributes>
+          <tx:method name="*" propagation="NEVER"/>
+      </tx:attributes>
+  </tx:advice>
+
+  <!--
+  <bean id="autoproxy" class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" autowire="autodetect" />
+  -->
+  <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager" autowire="byName" />
+  
+  <bean id="statDao" class="com.bogie.common.dao.impl.GenericDaoImpl" autowire="byName"/>
+  <bean id="genderDao" class="com.bogie.race.dao.impl.PhysicalAppearanceDaoImpl" autowire="byName"/>
+  <bean id="skinColorDao" class="com.bogie.race.dao.impl.PhysicalAppearanceDaoImpl" autowire="byName"/>
+  <bean id="hairColorDao" class="com.bogie.race.dao.impl.PhysicalAppearanceDaoImpl" autowire="byName"/>
+  <bean id="eyeColorDao" class="com.bogie.race.dao.impl.PhysicalAppearanceDaoImpl" autowire="byName"/>
+  <bean id="complexionDao" class="com.bogie.race.dao.impl.PhysicalAppearanceDaoImpl" autowire="byName"/>
+  <bean id="raceDao" class="com.bogie.race.dao.impl.RaceDaoImpl" autowire="byName"/>
+  <bean id="raceSkinColorDao" class="com.bogie.race.dao.impl.PhysicalAppearanceDaoImpl" autowire="byName"/>
+  <bean id="raceHairColorDao" class="com.bogie.race.dao.impl.PhysicalAppearanceDaoImpl" autowire="byName"/>
+  <bean id="raceEyeColorDao" class="com.bogie.race.dao.impl.PhysicalAppearanceDaoImpl" autowire="byName"/>
+  <bean id="raceComplexionDao" class="com.bogie.race.dao.impl.PhysicalAppearanceDaoImpl" autowire="byName"/>
+  <bean id="skillDao" class="com.bogie.skill.dao.impl.SkillDaoImpl" autowire="byName"/>
+  
+</beans>

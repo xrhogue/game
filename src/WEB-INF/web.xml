@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app
+      PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+      "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app>
+
+  <display-name>Game</display-name>
+  
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>
+      classpath:game-dao-beans.xml 
+      classpath:game-bus-beans.xml 
+      classpath:game-client-beans.xml
+    </param-value>
+  </context-param>
+
+  <servlet>
+    <servlet-name>GameApplication</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  
+  <servlet>
+    <servlet-name>gameService</servlet-name>
+    <servlet-class>com.bogie.server.GameServiceImpl</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>GameApplication</servlet-name>
+    <url-pattern>/com.bogie.GameApp/services/*</url-pattern>
+  </servlet-mapping>
+  
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  
+    <!-- Spring Open Session In View Pattern filter -->
+  <filter>
+    <filter-name>hibernateFilter</filter-name>
+    <filter-class>org.springframework.orm.hibernate3.support.OpenSessionInViewFilter</filter-class>
+  </filter>
+
+  <!-- Spring/Hibernate filter mappings -->
+  <filter-mapping>
+    <filter-name>hibernateFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  <filter-mapping>
+    <filter-name>hibernateFilter</filter-name>
+    <url-pattern>/</url-pattern>
+  </filter-mapping>
+  
+  <filter-mapping>
+    <filter-name>hibernateFilter</filter-name>
+    <url-pattern>*.html</url-pattern>
+  </filter-mapping>
+  
+</web-app>
+  

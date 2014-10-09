@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password"></property>
+        <!--property name="hibernate.connection.autocommit">true</property-->
+        <property name="hibernate.connection.url">jdbc:mysql://localhost/game</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="show_sql">true</property>
+        <!--property name="format_sql">true</property-->
+
+        <mapping class="com.bogie.common.lib.vo.Stat"/>
+        <mapping class="com.bogie.common.lib.vo.SkinColor"/>
+        <mapping class="com.bogie.common.lib.vo.HairColor"/>
+        <mapping class="com.bogie.common.lib.vo.EyeColor"/>
+        <mapping class="com.bogie.common.lib.vo.Complexion"/>
+        <mapping class="com.bogie.common.lib.vo.Gender"/>
+        <mapping class="com.bogie.race.lib.vo.Race"/>
+        <mapping class="com.bogie.race.lib.vo.RaceStat"/>
+        <mapping class="com.bogie.race.lib.vo.RaceHairColor"/>
+        <mapping class="com.bogie.race.lib.vo.RaceSkinColor"/>
+        <mapping class="com.bogie.race.lib.vo.RaceEyeColor"/>
+        <mapping class="com.bogie.race.lib.vo.RaceComplexion"/>
+        <mapping class="com.bogie.race.lib.vo.RaceHeightWeight"/>
+        <mapping class="com.bogie.race.lib.vo.RaceAge"/>
+        <mapping class="com.bogie.skill.lib.vo.Skill"/>
+        <mapping class="com.bogie.character.lib.vo.CharacterStat"/>
+        <mapping class="com.bogie.character.lib.vo.CharacterRace"/>
+        <mapping class="com.bogie.character.lib.vo.CharacterSkill"/>
+        <mapping class="com.bogie.character.lib.vo.CharacterBase"/>
+    </session-factory>
+</hibernate-configuration>

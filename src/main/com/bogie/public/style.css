@@ -1,0 +1,9 @@
+
+.sg-header {font-weight: bold}
+.sg-oddrow {background: gray}
+.sg-oddrow td {text-align: center}
+
+.gwt-TabBar {padding: 5px}
+.gwt-TabPanelBottom {border: 1px solid black}
+.gwt-TabBarItem {border: 1px solid black; padding: 2px; width: 100px; text-align: center}
+.gwt-TabBarItem-selected {color: blue}
