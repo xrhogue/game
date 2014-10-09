@@ -41,3 +41,14 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+/.settings/
+/tomcat/
+/war/
+/www/
+/.classpath
+/.project
+/.springBeans
+/.tomcatplugin
+/GameApp-compile.cmd
+/GameApp-shell.cmd
+/GameApp.launch
